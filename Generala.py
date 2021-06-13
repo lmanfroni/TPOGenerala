@@ -58,3 +58,4 @@ def contarunos(listajugada):
     unos = listajugada.count(1)
     return unos
 
+#test
