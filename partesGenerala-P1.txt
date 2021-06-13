@@ -1,0 +1,25 @@
+def validarJugador():
+    nombre=input("Jugador: ")
+    while nombre.isalnum() != True:
+            print("Debre ingresar un nombre con letra y/o números.")
+            nombre=input("Jugador 1: ")
+    return nombre
+               
+def compDiccionario():
+    j1=validarJugador()
+    j2=validarJugador()
+    player1={"Nombre": j1,"Uno ":"","Dos ":"","Tres ":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+    player2={"Nombre": j2,"Uno ":"","Dos ":"","Tres ":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+    return player1,player2
+
+def imprimirPuntos():
+    puntosj1,puntosj2=compDiccionario()
+    print("-----------------Puntos Jugador 1: ")
+    for clave in puntosj1:
+        print(clave,"-",puntosj1[clave])
+    print("-----------------Puntos Jugador 2: ")
+    for clave in puntosj2:
+        print(clave,"-",puntosj2[clave])
+
+print("Por favor, ingrese los nombres de dos jugadores. Pueden tener números y/o letras.")
+imprimirPuntos()
