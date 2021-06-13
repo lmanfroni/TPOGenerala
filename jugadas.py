@@ -35,28 +35,78 @@ def escalera(listajugada):
     return checkescalera
 
 def contarseises(listajugada):
-    check = listajugada.count(6)
-    seises = check * 6
+    if listajugada.count(6) = 5:
+        seises = ("Seis", 30)
+    elif listajugada.count(6) = 4:
+        seises = ("Seis", 24)
+    elif listajugada.count(6) = 3:
+        seises = ("Seis", 18)
+    elif listajugada.count(6) = 2:
+        seises = ("Seis", 12)
+    elif listajugada.count(6) = 1:
+        seises = ("Seis", 6)
+    elif listajugada.count(6) = 0:
+        seises = ("Seis", 0)
     return seises
 
 def contarcincos(listajugada):
-    check = listajugada.count(5)
-    cincos = check * 5
+    if listajugada.count(5) = 5:
+        cincos = ("Cinco", 25)
+    elif listajugada.count(5) = 4:
+        cincos = ("Cinco", 20)
+    elif listajugada.count(5) = 3:
+        cincos = ("Cinco", 15)
+    elif listajugada.count(5) = 2:
+        cincos = ("Cinco", 10)
+    elif listajugada.count(5) = 1:
+        cincos = ("Cinco", 5)
+    elif listajugada.count(5) = 0:
+        cincos = ("Cinco", 0)
     return cincos
 
 def contarcuatros(listajugada):
-    check = listajugada.count(4)
-    cuatros = check * 4
+    if listajugada.count(4) = 5:
+        cuatros = ("Cuatro", 20)
+    elif listajugada.count(4) = 4:
+        cuatros = ("Cuatro", 16)
+    elif listajugada.count(4) = 3:
+        cuatros = ("Cuatro", 12)
+    elif listajugada.count(4) = 2:
+        cuatros = ("Cuatro", 8)
+    elif listajugada.count(4) = 1:
+        cuatros = ("Cuatro", 4)
+    elif listajugada.count(4) = 0:
+        cuatros = ("Cuatro", 0)
     return cuatros
 
 def contartres(listajugada):
-    check = listajugada.count(3)
-    tres = check * 3
+    if listajugada.count(3) = 5:
+        tres = ("Tres", 15)
+    elif listajugada.count(3) = 4:
+        tres = ("Tres", 12)
+    elif listajugada.count(3) = 3:
+        tres = ("Tres", 9)
+    elif listajugada.count(3) = 2:
+        tres = ("Tres", 6)
+    elif listajugada.count(3) = 1:
+        tres = ("Tres", 3)
+    elif listajugada.count(3) = 0:
+        tres = ("Tres", 0)
     return tres
 
 def contardos(listajugada):
-    check = listajugada.count(2)
-    dos = check * 2
+    if listajugada.count(2) = 5:
+        dos = ("Dos", 10)
+    elif listajugada.count(2) = 4:
+        dos = ("Dos", 8)
+    elif listajugada.count(2) = 3:
+        dos = ("Dos", 6)
+    elif listajugada.count(2) = 2:
+        dos = ("Dos", 4)
+    elif listajugada.count(2) = 1:
+        dos = ("Dos", 2)
+    elif listajugada.count(2) = 0:
+        dos = ("Dos", 0)
     return dos
 
 def contarunos(listajugada):
