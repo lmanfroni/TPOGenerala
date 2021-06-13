@@ -1,21 +1,20 @@
 def generala(listajugada):
-    checkgen = 0
     for x in range(len(listajugada)):
-        if listajugada.count(listajugada[x]) > 4:
-            checkgen = 50
-        break
+        if listajugada.count(listajugada[x]) == 5:
+            checkgen = ("Generala", 50)
+        else: 
+			checkgen = ("Generala", 0)		
     return checkgen
 
 def poker(listajugada):
-    check = 0
     for x in range(len(listajugada)):
-        if listajugada.count(listajugada[x]) > 3:
-            check = 40
-            break
+        if listajugada.count(listajugada[x]) == 4:
+            check = ("Poker", 40)
+        else: 
+			check = ("Poker", 0)
     return check
 
 def fullhouse(listajugada):
-    checkfull = 0
     trio = 0
     duo = 0
     for x in range(len(listajugada)):
@@ -24,14 +23,17 @@ def fullhouse(listajugada):
         elif listajugada.count(listajugada[x]) == 3:
             trio = 1
     if trio == 1 and duo == 1:
-        checkfull = 30
+        checkfull = ("Full", 30)
+    else: 
+		checkfull = ("Full", 0)
     return checkfull
 
 def escalera(listajugada):
     listajugada.sort()
-    checkescalera = 0
     if listajugada == [1,2,3,4,5] or listajugada == [2,3,4,5,6] or listajugada == [1,3,4,5,6]:
-        checkescalera = 20
+        checkescalera = ("Escalera", 20)
+    else:
+		checkescalera = ("Escalera", 0)
     return checkescalera
 
 def contarseises(listajugada):
