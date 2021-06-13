@@ -39,30 +39,50 @@ def validar_jugada(listajugada):
 
     return opciones
 
+def preguntar_resultado():
+		# ~ En el primer turno tenes 10 opciones para elegir
+		# ~ En el segundo turno tenes 9 opciones para elegir
+		# ~ En el tercer turno tenes 8 opciones para elegir
+		# ~ En el cuarto turno tenes 7 opciones para elegir
+		# ~ En el quinto turno tenes 6 opciones para elegir
+		# ~ En el sexto turno tenes 5 opciones para elegir 
+		# ~ En el septimo turno tenes 4 opciones para elegir
+		# ~ En el octavo turno tenes 3 opciones para elegir
+		# ~ En el noveno turno tenes 2 opciones para elegir
+		# ~ En el decimo turno tenes 1 opciones para elegir
+	pass
+
 def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN EL DICCIONARIO, FALTA PASAR COMO PARAMETRO EL JUGADOR
+    resultado = () # Tupla con 2 valores
     seguir=True
     contador_tiros=1
     cantidad_dados = 5
-    while(int(contador_tiros) <= 3 and seguir == True):
+    while(int(contador_tiros) <= 3 and seguir == True):         
         dados = tirar_dados(cantidad_dados)
         contador_tiros = contador_tiros + 1
         tirada = validar_jugada(dados)
         print("Los dados de la tirada son los siguientes: ", dados)
         print("Los resultados posibles de la tirada son los siguientes: ",('\n'),"Uno: ", tirada[0]," Dos: ", tirada[1]," Tres: ", tirada[2]," Cuatro: ", tirada[3]," Cinco: ", tirada[4]," Seis: ", tirada[5]," Escalera: ", tirada[6]," Full: ",tirada[7]," Poker: ",tirada[8]," Generala: ",tirada[9])     
-        consulta = "Si"
         if(contador_tiros < 3):
-            consulta = input("¿Desea seguir tirando? ")
-            while consulta != "Si" and consulta != "No":
-                consulta = input("¿Desea seguir tirando?")
-        else:
-            consulta = "No"
-        if(consulta == "No"):
-            seguir=False
-    return
+			pregunta = input("¿Desea finalizar su turno y conservar uno de estos resultados?")
+			while consulta != "Si" and consulta != "No":
+                pregunta = input("¿Desea finalizar su turno y conservar uno de estos resultados?")
+            if(pregunta == "Si"):
+				seguir == False
+				# Pregunto que resultado
+				# Y termino el turno
+				pass
+		else: 
+			# Preguntar al usuario con que resultado quedarte
+			# Y termino el turno
+			pass
+    return resultado # Retorno el resultado del turno
+			("uno" , 3)
+			
                
 j1=validarJugador()
 j2=validarJugador()
-player1={"Nombre": j1,"Uno ":"","Dos ":"","Tres ":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+player1={"Nombre": j1,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 player2={"Nombre": j2,"Uno ":"","Dos ":"","Tres ":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 
 turno()
