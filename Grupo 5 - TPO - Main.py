@@ -68,9 +68,9 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
 			while consulta != "Si" and consulta != "No":
                 pregunta = input("¿Desea finalizar su turno y conservar uno de estos resultados?")
             if(pregunta == "Si"):
-				seguir == False
 				# Pregunto que resultado
 				# Y termino el turno
+				seguir == False
 				pass
 		else: 
 			# Preguntar al usuario con que resultado quedarte
@@ -83,6 +83,6 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
 j1=validarJugador()
 j2=validarJugador()
 player1={"Nombre": j1,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
-player2={"Nombre": j2,"Uno ":"","Dos ":"","Tres ":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+player2={"Nombre": j2,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 
 turno()
