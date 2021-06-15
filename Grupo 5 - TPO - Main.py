@@ -61,42 +61,48 @@ def validar_jugada(listajugada, diccionario):
 def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN EL DICCIONARIO, FALTA PASAR COMO PARAMETRO EL JUGADOR
     resultado = () # Tupla con 2 valores
     seguir=True
-    contador_tiros= 1
+    contador_tiros= 0
     cantidad_dados = 5  
     while(int(contador_tiros) <= 3 and seguir == True):
-        jugada_final = ()
         dados = tirar_dados(cantidad_dados)
         contador_tiros = contador_tiros + 1
+        print("Tiros:", contador_tiros)
         tirada = validar_jugada(dados, player1) #AGREGAR VALIDACIÓN PARA SABER QUE DICCIONARIO ES
         print("Los dados de la tirada son los siguientes: ", dados)
         print("Los resultados posibles de la tirada son los siguientes: ",('\n'),tirada)     
         if(contador_tiros < 3):
-            pregunta = input("Indique con que resultado desea quedarse ingresando el nombre de la jugada. Si desea seguir tirando, ingrese 'Seguir' ")
-            while pregunta.capitalize() == "Seguir":
-                pregunta = input("Indique con que resultado desea quedarse ingresando el nombre de la jugada. Si desea seguir tirando, ingrese 'Seguir' ")
-            if(pregunta != "Seguir"):
+            pregunta = input("¿Desea seguir tirando? ")
+            while pregunta.capitalize() != "Si" and pregunta.capitalize() != "No":
+                pregunta = input("¿Desea seguir tirando? ")
+            if pregunta.capitalize() == "No":
+                final_turno = input("Para finalizar su turno, indique con que resultado desea quedarse ingresando el nombre de la jugada ")
                 for x in range(len(tirada)):
                     print(tirada[x][0])
                     print(tirada[x])
-                    if pregunta.capitalize() in tirada[x][0]:
+                    if final_turno.capitalize() in tirada[x][0]:
                         resultado= tuple(tirada[x])
-                        break
-        else: 
+                    break
+
+        elif contador_tiros == 3: 
+            
+            final_turno2 = input("Esta es la tercer tirada del turno, por favor indique con que resultado desea quedarse ingresando el nombre de la jugada ")
+            for x in range(len(tirada)):
+                print(tirada[x][0])
+                print(tirada[x])
+                if final_turno2.capitalize() in tirada[x][0]:
+                    resultado= tuple(tirada[x])
             seguir == False
-            pass
     return resultado # Retorno el resultado del turno
 
 def contador_Turnos(diccionario1,diccionario2):
-    turnos=1
-    while turnos<=1:
-        rfinal = turno()
-        if turnos % 2 == 0:
-            clave,valor="Dos",12
-            diccionario2[clave]=valor
-        else:
-            clave,valor="Dos",12
-            diccionario1[clave]=valor
-        turnos=turnos+1
+
+    rfinal = turno()
+    if turnos % 2 == 0:
+        clave,valor="Dos",12
+        diccionario2[clave]=valor
+    else:
+        clave,valor="Dos",12
+        diccionario1[clave]=valor
     return diccionario1,diccionario2
 
                
