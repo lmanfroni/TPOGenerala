@@ -82,20 +82,19 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
                     if final_turno.capitalize() in tirada[x][0]:
                         resultado= tuple(tirada[x])
                     break
+                break
 
         elif contador_tiros == 3: 
             
             final_turno2 = input("Esta es la tercer tirada del turno, por favor indique con que resultado desea quedarse ingresando el nombre de la jugada ")
             for x in range(len(tirada)):
-                print(tirada[x][0])
-                print(tirada[x])
                 if final_turno2.capitalize() in tirada[x][0]:
                     resultado= tuple(tirada[x])
-            seguir == False
+            seguir = False
     return resultado # Retorno el resultado del turno
 
 def contador_Turnos(diccionario1,diccionario2):
-
+    turnos = 1
     rfinal = turno()
     if turnos % 2 == 0:
         clave,valor="Dos",12
@@ -112,5 +111,3 @@ player1={"Nombre": j1,"Uno":"1","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis"
 player2={"Nombre": j2,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 
 print(contador_Turnos(player1,player2))
-print(player1["Uno"])
-print(player1["Dos"])
