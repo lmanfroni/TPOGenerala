@@ -23,7 +23,7 @@ def tirar_dados(cantidad):
         dados.append(random.randint(1,6))
     return dados
 
-def validar_jugada(listajugada):
+def validar_jugada(listajugada, diccionario):
     opciones = []
     uno = jugadas.contarunos(listajugada)
     dos = jugadas.contardos(listajugada)
@@ -35,54 +35,76 @@ def validar_jugada(listajugada):
     full = jugadas.fullhouse(listajugada)
     poker = jugadas.poker(listajugada)
     generala = jugadas.generala(listajugada)
-    opciones.extend([uno,dos,tres,cuatro,cinco,seis,escalera,full,poker,generala])
-
+    if diccionario["Uno"] == "":
+        opciones.append(uno)
+    if diccionario["Dos"] == "":
+        opciones.append(dos)
+    if diccionario["Tres"] == "":
+        opciones.append(tres)
+    if diccionario["Cuatro"] == "":
+        opciones.append(cuatro)    
+    if diccionario["Cinco"] == "":
+        opciones.append(cinco)
+    if diccionario["Seis"] == "":
+        opciones.append(seis)
+    if diccionario["Escalera"] == "":
+        opciones.append(escalera)
+    if diccionario["Full"] == "":
+        opciones.append(full)
+    if diccionario["Poker"] == "":
+        opciones.append(poker)
+    if diccionario["Generala"] == "":
+        opciones.append(generala)        
     return opciones
 
-def preguntar_resultado():
-		# ~ En el primer turno tenes 10 opciones para elegir
-		# ~ En el segundo turno tenes 9 opciones para elegir
-		# ~ En el tercer turno tenes 8 opciones para elegir
-		# ~ En el cuarto turno tenes 7 opciones para elegir
-		# ~ En el quinto turno tenes 6 opciones para elegir
-		# ~ En el sexto turno tenes 5 opciones para elegir 
-		# ~ En el septimo turno tenes 4 opciones para elegir
-		# ~ En el octavo turno tenes 3 opciones para elegir
-		# ~ En el noveno turno tenes 2 opciones para elegir
-		# ~ En el decimo turno tenes 1 opciones para elegir
-	pass
 
 def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN EL DICCIONARIO, FALTA PASAR COMO PARAMETRO EL JUGADOR
     resultado = () # Tupla con 2 valores
     seguir=True
-    contador_tiros=1
-    cantidad_dados = 5
-    while(int(contador_tiros) <= 3 and seguir == True):         
+    contador_tiros= 1
+    cantidad_dados = 5  
+    while(int(contador_tiros) <= 3 and seguir == True):
+        jugada_final = ()
         dados = tirar_dados(cantidad_dados)
         contador_tiros = contador_tiros + 1
-        tirada = validar_jugada(dados)
+        tirada = validar_jugada(dados, player1) #AGREGAR VALIDACIÓN PARA SABER QUE DICCIONARIO ES
         print("Los dados de la tirada son los siguientes: ", dados)
-        print("Los resultados posibles de la tirada son los siguientes: ",('\n'),"Uno: ", tirada[0]," Dos: ", tirada[1]," Tres: ", tirada[2]," Cuatro: ", tirada[3]," Cinco: ", tirada[4]," Seis: ", tirada[5]," Escalera: ", tirada[6]," Full: ",tirada[7]," Poker: ",tirada[8]," Generala: ",tirada[9])     
+        print("Los resultados posibles de la tirada son los siguientes: ",('\n'),tirada)     
         if(contador_tiros < 3):
-			pregunta = input("¿Desea finalizar su turno y conservar uno de estos resultados?")
-			while consulta != "Si" and consulta != "No":
-                pregunta = input("¿Desea finalizar su turno y conservar uno de estos resultados?")
-            if(pregunta == "Si"):
-				# Pregunto que resultado
-				# Y termino el turno
-				seguir == False
-				pass
-		else: 
-			# Preguntar al usuario con que resultado quedarte
-			# Y termino el turno
-			pass
+            pregunta = input("Indique con que resultado desea quedarse ingresando el nombre de la jugada. Si desea seguir tirando, ingrese 'Seguir' ")
+            while pregunta.capitalize() == "Seguir":
+                pregunta = input("Indique con que resultado desea quedarse ingresando el nombre de la jugada. Si desea seguir tirando, ingrese 'Seguir' ")
+            if(pregunta != "Seguir"):
+                for x in range(len(tirada)):
+                    print(tirada[x][0])
+                    print(tirada[x])
+                    if pregunta.capitalize() in tirada[x][0]:
+                        resultado= tuple(tirada[x])
+                        break
+        else: 
+            seguir == False
+            pass
     return resultado # Retorno el resultado del turno
-			("uno" , 3)
-			
+
+def contador_Turnos(diccionario1,diccionario2):
+    turnos=1
+    while turnos<=1:
+        rfinal = turno()
+        if turnos % 2 == 0:
+            clave,valor="Dos",12
+            diccionario2[clave]=valor
+        else:
+            clave,valor="Dos",12
+            diccionario1[clave]=valor
+        turnos=turnos+1
+    return diccionario1,diccionario2
+
                
 j1=validarJugador()
 j2=validarJugador()
-player1={"Nombre": j1,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+player1={"Nombre": j1,"Uno":"1","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 player2={"Nombre": j2,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 
-turno()
+print(contador_Turnos(player1,player2))
+print(player1["Uno"])
+print(player1["Dos"])
