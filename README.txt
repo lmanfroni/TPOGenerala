@@ -1,0 +1,8 @@
+- Poder decidir que dados me quedo.
+- Diferenciar los turnos
+- Agregar tema Excepciones-->Conectado con tema Archivos
+- Agregar tema Matrices
+- Agregar tema Archivos --> Conectado con tema Excepciones
+- Agregar tema Recursividad --> Fijarse respecto de presentar resultados del juego
+- Emprolijar código--> Baja prioridad
+- Chequeo de jaque mate --> Revisar en cada turno si un jugador ya no tiene chances de ganar con los turnos restantes --> Baja prioridad
