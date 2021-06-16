@@ -71,9 +71,10 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
         print("Tiros:", contador_tiros)
         for x in range(len(lista_dados_auxiliar)):
             dados.append(lista_dados_auxiliar[x])
-        lista_dados_auxiliar.clear()
         tirada = validar_jugada(dados, player1) #AGREGAR VALIDACIÓN PARA SABER QUE DICCIONARIO ES
         print("Los dados de la tirada son los siguientes: ", dados)
+        if (lista_dados_auxiliar[0] != None):
+            print("Los dados conservados de la anterior tirada son: ", lista_dados_auxiliar)
         print("Los resultados posibles de la tirada son los siguientes: ",('\n'),tirada)     
         if(contador_tiros < 3):
             pregunta = input("¿Desea seguir tirando? ")
@@ -90,11 +91,9 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
                         resultado = tuple(tirada[x])                        
                 seguir = False
             elif pregunta.capitalize() == "Si": 
-                pregunta2 = 0
-                cantidad_dados = 5
+                pregunta2 = None 
                 while(pregunta2 != -1 and cantidad_dados > 1):
                     pregunta2 = int(input("Indique el numero de dado que desea guardar para la proxima tirada. (Sino desea guardar mas dados ingrese -1):"))
-                    
                     while(pregunta2 != -1 and pregunta2 not in dados):
                         pregunta2 = int(input("Por favor ingrese un dato valido:"))
                     if (pregunta2 in dados):
@@ -114,21 +113,32 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
             seguir = False
     return resultado # Retorno el resultado del turno
 
-def contador_Turnos(diccionario1,diccionario2):
-    turnos = 1
+
+
+
+
+
+
+def contador_Turnos(diccionarioX):
     rfinal = turno()
-    if turnos % 2 == 0:
-        clave,valor=rfinal
-        diccionario2[clave]=valor
-    else:
-        clave,valor=rfinal
-        diccionario1[clave]=valor
-    return diccionario1,diccionario2
-
-
+    clave,valor=rfinal
+    diccionarioX[clave]=valor
+    print("-----------------Puntos Jugador: ")
+    for clave in diccionarioX:
+        print(clave,"-",diccionarioX[clave])
+    
+               
 j1=validarJugador()
 j2=validarJugador()
-player1={"Nombre": j1,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
-player2={"Nombre": j2,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+player1={"Nombre Jugador 1": j1,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
+player2={"Nombre Jugador 2": j2,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}
 
-print(contador_Turnos(player1,player2))
+tur_no=1
+while tur_no <=4:
+    if tur_no%2==0:
+        print("----------------------------Continua Jugador 2------------------")
+        contador_Turnos(player2)
+    else:
+        print("----------------------------Turno Jugador 1------------------")
+        print(contador_Turnos(player1))
+    tur_no=tur_no+1
