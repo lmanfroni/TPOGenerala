@@ -89,15 +89,14 @@ def turno(): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN
                         resultado = tuple(tirada[x])                        
                 seguir = False
             elif pregunta.capitalize() == "Si": 
-                pregunta2 = 0 
-                while(pregunta2 != -1 and contador_tiros > 1):
-                    pregunta2 = int(input("Indique el numero de dado que desea guardar para la proxima tirada. (Sino desea guardar mas dados ingrese -1):"))
-                    while(pregunta2 != -1 and pregunta2 not in dados):
-                        pregunta2 = int(input("Por favor ingrese un dato valido:"))
-                    if (pregunta2 in dados):
-                        lista_dados_auxiliar.append(pregunta2)
-                        dados.remove(pregunta2)
-                        cantidad_dados = cantidad_dados -1 
+                pregunta2 = int(input("Indique el numero de dado que desea guardar para la proxima tirada. (Sino desea guardar mas dados ingrese -1): "))
+                while(pregunta2 != -1 and cantidad_dados > 1 and pregunta2 not in dados):
+                    pregunta2 = int(input("Por favor ingrese un dato valido:"))
+                if (pregunta2 in dados):
+                    lista_dados_auxiliar.append(pregunta2)
+                    dados.remove(dados[pregunta2])
+                    cantidad_dados = cantidad_dados -1
+                    print("Auxiliar:", lista_dados_auxiliar)
 
 
                     #verificamos que este en la lista, si no esta repreguntamos y si esta
