@@ -8,15 +8,6 @@ def validarJugador():
             nombre=input("Jugador: ")
     return nombre
 
-def imprimirPuntos():
-    puntosj1,puntosj2=compDiccionario()
-    print("-----------------Puntos Jugador 1: ")
-    for clave in puntosj1:
-        print(clave,"-",puntosj1[clave])
-    print("-----------------Puntos Jugador 2: ")
-    for clave in puntosj2:
-        print(clave,"-",puntosj2[clave])
-        
 def tirar_dados(cantidad):
     dados=[]
     for i in range(int(cantidad)):
