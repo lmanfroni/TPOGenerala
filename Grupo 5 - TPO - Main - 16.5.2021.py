@@ -139,7 +139,7 @@ player1={"Nombre Jugador 1": j1,"Uno":None,"Dos":None,"Tres":None,"Cuatro":None,
 player2={"Nombre Jugador 2": j2,"Uno":None,"Dos":None,"Tres":None,"Cuatro":None,"Cinco":None,"Seis":None,"Escalera":None,"Full":None,"Poker":None,"Generala":None}
 
 tur_no=1
-while tur_no <=4:
+while tur_no <=20:
     if tur_no%2==0:
         print()
         print("Turno Jugador 2".center(60))
@@ -149,5 +149,90 @@ while tur_no <=4:
         print("Turno Jugador 1".center(60))
         guardar_resultado(player1)
     tur_no=tur_no+1
+    
+print("Juego finalizado - Para ver los resultados, ingrese al archivo 'Resultados Generala'")
 
-#print(guardar_resultado(player1,player2))
+columnas = 2
+filas = 10
+matriz1 = []
+matriz2 = []
+
+for f in range(filas):
+    matriz1.append([0] * columnas)
+for f in range(filas):
+    matriz2.append([0] * columnas)      
+
+lista_keys = ["Uno","Dos","Tres","Cuatro","Cinco","Seis","Escalera","Full","Poker","Generala"]
+lista_values1 = []
+lista_values_dic1 = player1.values()
+for x in lista_values_dic1:
+    lista_values1.append(x)
+lista_values1.pop(0)
+
+lista_values2 = []
+lista_values_dic2 = player2.values()
+for x in lista_values_dic2:
+    lista_values2.append(x)
+lista_values2.pop(0)
+
+total_j1 = sum(lista_values1)
+total_j2 = sum(lista_values2)
+
+if total_j1 > total_j2:
+    ganador = str(j1)
+elif total_j1 < total_j2:
+    ganador = str(j2)
+else:
+    ganador = "EMPATE!"
+
+
+for f in range(filas):
+    matriz1[f][0] = lista_keys[f]
+    matriz2[f][0] = lista_keys[f]
+    matriz1[f][1] = lista_values1[f]
+    matriz2[f][1] = lista_values2[f]
+ 
+try:
+    arch = open("Resultados Generala.txt","wt")
+    arch.write("Jugador " + j1 + '\n')
+    arch.write('\n') 
+ 
+    for f in range(filas):
+        for c in range(columnas):
+            if c == 0:
+                arch.write(str(matriz1[f][c]) + " = ")
+            if c == 1:
+                arch.write(str(matriz1[f][c]))
+        arch.write('\n')
+
+    arch.write('\n') 
+    arch.write("Jugador " + j2 + '\n')
+    arch.write('\n') 
+
+    for f in range(filas):
+        for c in range(columnas):
+            if c == 0:
+                arch.write(str(matriz2[f][c]) + " = ")
+            if c == 1:
+                arch.write(str(matriz2[f][c]))
+        arch.write('\n')
+    arch.write('\n')
+    
+    arch.write("Total " + str(j1) + " " + str(total_j1) + '\n')
+    arch.write("Total " + str(j2) + " " + str(total_j2) + '\n')
+    arch.write('\n')
+    arch.write("El ganador es el jugador " + ganador)
+
+except OSError as mensaje:
+    print("No se puede grabar el archivo:", mensaje)
+finally:
+    try:
+        arch.close()
+    except NameError:
+        pass
+
+    
+     
+    
+
+    
