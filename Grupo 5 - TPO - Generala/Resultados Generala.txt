@@ -1,0 +1,30 @@
+Jugador Pepe
+
+Uno = 0
+Dos = 0
+Tres = 0
+Cuatro = 0
+Cinco = 10
+Seis = 6
+Escalera = 0
+Full = 0
+Poker = 0
+Generala = 0
+
+Jugador Pepa
+
+Uno = 1
+Dos = 2
+Tres = 3
+Cuatro = 4
+Cinco = 5
+Seis = 12
+Escalera = 0
+Full = 0
+Poker = 0
+Generala = 0
+
+Total Ricardo 16
+Total Fernando 27
+
+El ganador es el jugador Pepa
