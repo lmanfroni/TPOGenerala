@@ -35,36 +35,44 @@ def validar_jugada(listajugada, diccionario):
     full = jugadas.fullhouse(listajugada)
     poker = jugadas.poker(listajugada)
     generala = jugadas.generala(listajugada)
-    if diccionario["Uno"] == "":
+    if diccionario["Uno"] == None:
         opciones.append(uno)
-    if diccionario["Dos"] == "":
+    if diccionario["Dos"] == None:
         opciones.append(dos)
-    if diccionario["Tres"] == "":
+    if diccionario["Tres"] == None:
         opciones.append(tres)
-    if diccionario["Cuatro"] == "":
+    if diccionario["Cuatro"] == None:
         opciones.append(cuatro)    
-    if diccionario["Cinco"] == "":
+    if diccionario["Cinco"] == None:
         opciones.append(cinco)
-    if diccionario["Seis"] == "":
+    if diccionario["Seis"] == None:
         opciones.append(seis)
-    if diccionario["Escalera"] == "":
+    if diccionario["Escalera"] == None:
         opciones.append(escalera)
-    if diccionario["Full"] == "":
+    if diccionario["Full"] == None:
         opciones.append(full)
-    if diccionario["Poker"] == "":
+    if diccionario["Poker"] == None:
         opciones.append(poker)
-    if diccionario["Generala"] == "":
+    if diccionario["Generala"] == None:
         opciones.append(generala)        
     return opciones
 
 
-def turno(diccionariox): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN EL DICCIONARIO, FALTA PASAR COMO PARAMETRO EL JUGADOR
+def turno(diccionarioX): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y PONERLOS EN EL DICCIONARIO, FALTA PASAR COMO PARAMETRO EL JUGADOR
     lista_jugadas_bien = ["Uno","Dos","Tres","Cuatro", "Cinco", "Seis", "Escalera", "Full", "Poker", "Generala"]
     resultado = () # Tupla con 2 valores
     lista_dados_auxiliar = []
     seguir=True
     contador_tiros= 0
     cantidad_dados = 5  
+    palabras_clave = diccionarioX.keys()
+    lista_resultados_obtenidos = []
+
+    for x in palabras_clave: 
+        if (diccionarioX[x] != None):
+            lista_resultados_obtenidos.append(x)
+    lista_resultados_obtenidos.pop(0)
+
     while(int(contador_tiros) <= 3 and seguir == True):
         dados = tirar_dados(cantidad_dados)
         contador_tiros = contador_tiros + 1
@@ -82,7 +90,7 @@ def turno(diccionariox): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y
             if pregunta.capitalize() == "No":
 
                 final_turno = input("Para finalizar su turno, indique con que resultado desea quedarse ingresando el nombre de la jugada: ")
-                while(final_turno.capitalize() not in lista_jugadas_bien):
+                while(final_turno.capitalize() not in lista_jugadas_bien or final_turno.capitalize() in lista_resultados_obtenidos):
                     final_turno = input("Por favor, ingrese un parametro valido: ")
 
                 for x in range(len(tirada)):
@@ -106,7 +114,7 @@ def turno(diccionariox): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y
         elif contador_tiros == 3: 
             
             final_turno2 = input("Esta es la tercer tirada del turno, por favor indique con que resultado desea quedarse ingresando el nombre de la jugada ")
-            while(final_turno2.capitalize() not in lista_jugadas_bien):
+            while(final_turno2.capitalize() not in lista_jugadas_bien or final_turno2.capitalize() in lista_resultados_obtenidos):
                     final_turno2 = input("Por favor, ingrese un parametro valido: ")
             for x in range(len(tirada)):
                 if final_turno2.capitalize() in tirada[x][0]:
@@ -127,8 +135,8 @@ def guardar_resultado(diccionarioX):
                
 j1=validarJugador()
 j2=validarJugador()
-player1={​​​​​​​"Nombre Jugador 1":j1,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}​​​​​​​
-player2={​​​​​​​"Nombre Jugador 2":j2,"Uno":"","Dos":"","Tres":"","Cuatro":"","Cinco":"","Seis":"","Escalera":"","Full":"","Poker":"","Generala":""}​​​​​​​
+player1={"Nombre Jugador 1": j1,"Uno":None,"Dos":None,"Tres":None,"Cuatro":None,"Cinco":None,"Seis":None,"Escalera":None,"Full":None,"Poker":None,"Generala":None}
+player2={"Nombre Jugador 2": j2,"Uno":None,"Dos":None,"Tres":None,"Cuatro":None,"Cinco":None,"Seis":None,"Escalera":None,"Full":None,"Poker":None,"Generala":None}
 
 tur_no=1
 while tur_no <=4:
