@@ -8,6 +8,11 @@ def validarJugador():
             nombre=input("Jugador: ")
     return nombre
 
+def imprimir_opciones(lista_tirada):
+    if len(lista_tirada)>0:
+        print(lista_tirada[0], end=" ")
+        imprimir_opciones(lista_tirada[1: ])
+
 def tirar_dados(cantidad):
     dados=[]
     for i in range(int(cantidad)):
@@ -73,7 +78,8 @@ def turno(diccionarioX): #FALTA COMO MANTENER CIERTOS DADOS DE TIRADA A TIRADA Y
         lista_dados_auxiliar.clear()
         tirada = validar_jugada(dados, diccionarioX) #AGREGAR VALIDACIÓN PARA SABER QUE DICCIONARIO ES
         print("Los dados de la tirada son los siguientes: ", dados)
-        print("Los resultados posibles de la tirada son los siguientes: ",('\n'),tirada)     
+        print("Los resultados posibles de la tirada son los siguientes: ")
+        imprimir_opciones(tirada)
         if(contador_tiros < 3):
             pregunta = input("¿Desea seguir tirando? ")
             while pregunta.capitalize() != "Si" and pregunta.capitalize() != "No":
